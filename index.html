@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+<body ng-app='app'>
+  <div ng-controller='HomeController as homeCtrl' class="container-fluid">
+    <div class="row-fluid">
+      <div class='col-md-4'>
+        <form ng-submit='add()'>
+          <label for='tdItem'>To Do Item</label>
+          <input type='text' ng-model='homeCtrl.input' class="form-control" id='tdItem' placeholder='To Do Item'/>
+          <label for='priority'>Item Priority</label>
+          <select id='priority' class="form-control">
+            <option value="">Get'er Done</option>
+            <option value="">Procrastinate</option>
+            <option value="">Forget About It</option>
+          </select>
+          <button type='button' class="btn btn-primary" ng-click='homeCtrl.add()'>Add Todo</button>
+        </form>
+      </div>
+      <div class='col-md-8'>
+        <button type='button' class="btn btn-primary">Order by highest priority</button>
+        <button type='button' class="btn btn-primary">Order by lowest priority</button>
+        <button type='button' class="btn btn-primary">Order alphabetically</button>
+        <ul style="list-style-type: none;">
+          <li ng-repeat='todoItem in homeCtrl.list'> {{ todoItem.task }} </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+<script src='app/todo.module.js'></script>
+<script src='app/home/todo.controller.js'></script>
+</body>
+</html>
