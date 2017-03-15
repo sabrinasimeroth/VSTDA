@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang='en'>
+
 <head>
   <meta charset='UTF-8'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,13 @@
   <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 </head>
+
 <body ng-app='app'>
   <div class="jumbotron">
     <div class="container">
       <h1>Simple Todo List</h1>
     </div>
-  </div >
+  </div>
   <div ng-controller='HomeController as homeCtrl'>
     <div class="container">
       <div class="row">
@@ -21,13 +23,14 @@
             <div class="panel-heading">Add Todo Item</div>
             <div class="panel-body">
               <form ng-submit='homeCtrl.add()'>
-                <label for='tdItem'>To Do Item</label>
-                <input type='text' ng-model='homeCtrl.input' class="form-control" id='tdItem' placeholder='To Do Item'/>
-                <br>
-                <label for='priority'>Item Priority</label>
-                <select ng-model="homeCtrl.priority" ng-options="priority[0] for priority in homeCtrl.priorities" id='priority' class="form-control">
-                </select>
-                <br>
+                <div class="form-group">
+                  <label for='tdItem'>To Do Item</label>
+                  <input type='text' ng-model='homeCtrl.input' class="form-control" id='tdItem' placeholder='To Do Item' />
+                </div>
+                <div class="form-group">
+                  <label for='priority'>Item Priority</label>
+                  <select ng-model="homeCtrl.priority" ng-options="priority[0] for priority in homeCtrl.priorities" id='priority' class="form-control"></select>
+                </div>
                 <button type='submit' class="btn btn-primary">Add Todo</button>
               </form>
             </div>
@@ -39,7 +42,7 @@
             <button ng-click="homeCtrl.lowPri()" type='button' class="btn btn-primary">Order by lowest priority</button>
             <button ng-click="homeCtrl.az()" type='button' class="btn btn-primary">Order alphabetically</button>
           </div>
-          <ul ng-model="todoList" style='list-style: none' class="list-group">
+          <ul style='list-style: none' class="list-group">
             <li ng-repeat='todoItem in homeCtrl.list | orderBy:homeCtrl.sort' class="{{todoItem.style}}">
               <a ng-click="homeCtrl.remove(todoItem)">
                 <i class="glyphicon glyphicon-remove"></i>
@@ -51,9 +54,10 @@
       </div>
     </div>
   </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
-<script src='app/todo.module.js'></script>
-<script src='app/home/todo.controller.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+  <script src='app/app.module.js'></script>
+  <script src='app/todo/todo.controller.js'></script>
 </body>
+
 </html>
